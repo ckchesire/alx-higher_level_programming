@@ -2,8 +2,8 @@
 if __name__ == "__main__":
     import sys
     from calculator_1 import add, sub, mul, div
-    
-    sign = ['+','-','*','/']
+
+    sign = ['+', '-', '*', '/']
     ln = len(sys.argv)
 
     if (ln - 1) != 3:
@@ -11,7 +11,8 @@ if __name__ == "__main__":
         sys.exit(1)
     else:
         if sys.argv[2] not in sign:
-            sys.stderr.write("Unknown operator. Available operators: +, -, * and /\n")
+            sys.stderr.write("Unknown operator. Available operators:\
+                    +, -, * and /\n")
             sys.exit(1)
         else:
             a = int(sys.argv[1])
