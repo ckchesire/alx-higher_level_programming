@@ -1,29 +1,26 @@
 #!/usr/bin/python3
-if __name__ == "__main__":
-    import sys
-    from calculator_1 import add, sub, mul, div
+import sys
+from calculator_1 import add, sub, mul, div
 
-    sign = ['+', '-', '*', '/']
-    ln = len(sys.argv)
 
-    if (ln - 1) != 3:
-        sys.stderr.write("Usage: ./100-my_calculator.py <a> <operator> <b>\n")
+def calculator(a, operator, b):
+    signs = {
+            '+': add,
+            '-': sub,
+            '*': mul,
+            '/': div
+    }
+
+    if operator not in signs:
+        print("Unknown operator. Available operators: +, -, * and /")
         sys.exit(1)
     else:
-        if sys.argv[2] not in sign:
-            sys.stderr.write("Unknown operator. Available operators:\
-                    +, -, * and /\n")
-            sys.exit(1)
-        else:
-            a = int(sys.argv[1])
-            b = int(sys.argv[3])
-            s = sys.argv[2]
+        result = signs[operator](int(a), int(b))
+        print("{} {} {} = {}".format(a, operator, b, result))
 
-            if s == '+':
-                print("{} {} {} = {}".format(a, s, b, add(a, b)))
-            elif s == '-':
-                print("{} {} {} = {}".format(a, s, b, sub(a, b)))
-            elif s == '*':
-                print("{} {} {} = {}".format(a, s, b, mul(a, b)))
-            elif s == '/':
-                print("{} {} {} = {}".format(a, s, b, div(a, b)))
+
+if __name__ == "__main__":
+    if len(sys.argv) != 4:
+        print("Usage: ./100-my_calculator.py <a> <operator> <b>")
+        sys.exit(1)
+    calculator(sys.argv[1], sys.argv[2], sys.argv[3])
