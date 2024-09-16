@@ -7,7 +7,7 @@ def no_c(my_string):
         for c in s_list:
             if c == 'c':
                 s_list.remove('c')
-            elif c == 'C':
+            if c == 'C':
                 s_list.remove('C')
         s_list = "".join(s_list)
         return (s_list)
