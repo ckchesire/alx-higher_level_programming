@@ -3,25 +3,25 @@
 #include "lists.h"
 
 /**
- * add_nodeint_begin - adds node at the beginning of listint_t list
+ * reverse_list - reverse singly linked listint_t list
  * @head: pointer to pointer of first node of listint_t list
- * @n: integer to add in listint_t list
- * Return: address of the new element or NULL if it fails
+ * Return: address of the new head of reversed list
  */
-listint_t *add_nodeint_begin(listint_t **head, const int n)
+listint_t *reverse_list(listint_t **head)
 {
-	listint_t *new;
+	listint_t *previous = NULL, *next = NULL;
+	listint_t *current = *head;
 
-	new = malloc(sizeof(listint_t));
-	if (new == NULL)
-		return (NULL);
-
-	new->n = n;
-	new->next = *head;
-	*head = new;
-	return (new);
+	while (current != NULL)
+	{
+		next = current->next;
+		current->next = previous;
+		previous = current;
+		current = next;
+	}
+	*head = previous;
+	return (*head);
 }
-
 /**
  * is_palindrome - function that checks if a singly list is a palindrome
  * @head: pointer to pointer of first node of listint_t list
@@ -29,27 +29,30 @@ listint_t *add_nodeint_begin(listint_t **head, const int n)
  */
 int is_palindrome(listint_t **head)
 {
-	listint_t *second_head  = *head;
-	listint_t *cpy_list = NULL, *cpy2_list = NULL;
+	listint_t *slow_pt = *head, *fast_pt = *head, *first_half = *head;
+	listint_t *second_half, *reversed_second_half;
 
-	if (*head == NULL || second_head->next == NULL)
+	if (*head == NULL || (*head)->next == NULL)
 		return (1);
-	while (second_head != NULL)
+	while (fast_pt != NULL && fast_pt->next != NULL)
 	{
-		add_nodeint_begin(&cpy_list, second_head->n);
-		second_head = second_head->next;
+		slow_pt = slow_pt->next;
+		fast_pt = fast_pt->next->next;
 	}
-	cpy2_list = cpy_list;
-	while (*head != NULL)
+
+	second_half = reverse_list(&slow_pt);
+	reversed_second_half = second_half;
+
+	while (second_half != NULL)
 	{
-		if ((*head)->n != cpy2_list->n)
+		if (first_half->n != second_half->n)
 		{
-			free_listint(cpy_list);
+			reverse_list(&reversed_second_half);
 			return (0);
 		}
-		*head = (*head)->next;
-		cpy2_list = cpy2_list->next;
+		first_half = first_half->next;
+		second_half = second_half->next;
 	}
-	free_listint(cpy_list);
+	reverse_list(&reversed_second_half);
 	return (1);
 }
