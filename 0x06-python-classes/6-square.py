@@ -10,8 +10,8 @@ class Square:
         parameters required for class Square.
 
         Args:
-            size (int): The size of a square
-            position (tuple) : position of a square
+            __size (int): The size of a square
+            __position (tuple) : position of a square
         """
         self.__size = size
         self.__position = position
@@ -68,8 +68,10 @@ class Square:
 
     def area(self):
         """Function to calculate the Area of a square
+
+            Returns: the area of a square
         """
-        return int(self.__size) ** 2
+        return self.__size ** 2
 
     def my_print(self):
         """Function that prints a square using #
@@ -77,8 +79,8 @@ class Square:
         if self.__size == 0:
             print("")
         else:
-            for ps1 in range(self.__position[1]):
-                print()
+            for ps1 in range(0, self.__position[1]):
+                print("")
             for sq in range(0, self.__size):
                 for ps0 in range(0, self.__position[0]):
                     print(" ", end="")
