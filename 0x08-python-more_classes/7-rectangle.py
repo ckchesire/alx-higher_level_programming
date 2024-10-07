@@ -4,6 +4,9 @@
     Attributes:
         height: An integer value representing the height of a rectangle
         width: An integer value representing the width of a rectangle
+        number_of_instances: Used to keep track of instances created and
+                            deleted
+        print_symbol: prints symbol that represents a rectangle instance
 """
 
 
@@ -14,7 +17,7 @@ class Rectangle:
     number_of_instances = 0
 
     # public class attribute to print symbol
-    print_symbol = '#'
+    print_symbol = "#"
 
     def __init__(self, width=0, height=0):
         """ Initializes the data values of a rectange
@@ -40,7 +43,7 @@ class Rectangle:
             return ''
         my_string = ''
         for h in range(self.__height):
-            my_string += Rectangle.print_symbol*self.__width
+            my_string += str(self.print_symbol)*self.__width
             my_string += '\n'
         return my_string[:-1]
 
