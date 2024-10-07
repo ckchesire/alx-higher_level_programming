@@ -30,19 +30,19 @@ class Rectangle:
         return self.__height
 
     @height.setter
-    def height(self, height):
+    def height(self, height_val):
         """Setter sets the height private attribute value.
 
             Validates the assignment of the height private attribute.
 
         Arg:
-            height: the value to be set
+            height_val: the value to be set
         """
-        if not isinstance(height, int):
+        if not isinstance(height_val, int):
             raise TypeError("height must be an integer")
-        if height < 0:
+        if height_val < 0:
             raise ValueError("height must be >= 0")
-        self.__height = height
+        self.__height = height_val
 
     @property
     def width(self):
@@ -54,7 +54,7 @@ class Rectangle:
         return self.__width
 
     @width.setter
-    def width(self, width):
+    def width(self, width_val):
         """Setter sets the width private attribute value.
 
             Validates the assignment of the width private attribute.
@@ -62,8 +62,8 @@ class Rectangle:
         Arg:
             height: the value to be set
         """
-        if not isinstance(width, int):
+        if not isinstance(width_val, int):
             raise TypeError("width must be an integer")
-        if width < 0:
+        if width_val < 0:
             raise ValueError("width must be >= 0")
-        self.__width = width
+        self.__width = width_val
