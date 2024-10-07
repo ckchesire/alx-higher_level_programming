@@ -1,0 +1,53 @@
+This is the test module for add_integer
+=======================================
+
+How to use 'add_integer '
+--------------------------
+
+We first import the 'add_integer' from the '0-add_integer' python executable
+
+	>>> add_integer = __import__('0-add_integer').add_integer
+
+Basic usage of the module:
+
+        >>> add_integer(1, 2)
+        3
+
+Test positive with negative:
+
+        >>> add_integer(100, -2)
+        98
+
+Test negative with positive:
+
+        >>> add_integer(-2, 100)
+        98
+
+Test with only one int argument:
+
+        >>> add_integer(2)
+        100
+
+Test with only one float argument:
+
+        >>> add_integer(100.3)
+        198
+
+Test with float as one of the arguments:
+
+        >>> add_integer(100.3, -2)
+        98
+
+Test with string passed as an argument:
+
+        >>> add_integer(4, "School")
+        Traceback (most recent call last):
+            ...
+        TypeError: b must be an integer
+
+Test with None passed as an argument:
+
+        >>> add_integer(None)
+        Traceback (most recent call last):
+            ...
+        TypeError: a must be an integer
