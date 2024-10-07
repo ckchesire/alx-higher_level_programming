@@ -88,12 +88,13 @@ class Rectangle:
         return (2*self.__height) + (2*self.__width)
 
     def __str__(self):
-        """ Method to print rectangle """
+        """ Method to print rectangle  nicely formated
+            string outputted using '#'
+        """
         if self.__height == 0 or self.__width == 0:
-            return ""
-        else:
-            my_string = ""
-            for h in range(self.__height):
-                my_string += "#"*self.__width
-                my_string += "\n"
-            return my_string
+            return ''
+        my_string = ''
+        for h in range(self.__height):
+            my_string += '#'*self.__width
+            my_string += '\n'
+        return my_string[:-1]
