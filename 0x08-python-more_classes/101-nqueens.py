@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 import sys
 """This module solves the N queens puzzle of placing N non-attacking
     queens on an NxN chessboard.
