@@ -1,18 +1,24 @@
 #!/usr/bin/python3
+"""
+Module that adds two new lines after a set of characters.
+where there's punctuation i.e('.', ',',':')
+
+"""
+
+
 def text_indentation(text):
+    """ Prints text with added two newlines after
+         punctuation characters {'.', '?', ':'}
+
+         Args:
+            text: string of characters to modify
+    """
+
     if not isinstance(text, str):
         raise TypeError("text must be a string")
-    
-    result = ""
-    skip_space = False
-    
-    for char in text:
-        if skip_space and char == ' ':
-            continue
-        skip_space = False
-        result += char
-        if char in ['.', '?', ':']:
-            result += "\n\n"
-            skip_space = True
 
-    print(result.strip())
+    for delim in ".:?":
+        text = (delim + "\n\n").join(
+            [line.strip(" ") for line in text.split(delim)])
+
+    print("{}".format(text), end="")
