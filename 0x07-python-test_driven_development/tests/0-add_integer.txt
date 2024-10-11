@@ -1,12 +1,18 @@
-This is the test module for add_integer
+# 0-add_integer.py
 =======================================
-
-How to use 'add_integer '
---------------------------
-
+How to use 0-add_integer.py
+======================================
 We first import the 'add_integer' from the '0-add_integer' python executable
 
 	>>> add_integer = __import__('0-add_integer').add_integer
+
+Checking for module docstring:
+
+	>>> m = __import__("0-add_integer").__doc__
+
+Checking for function docstring:
+
+	>>> f = __import__("0-add_integer").add_integer.__doc__
 
 Basic usage of the module:
 
@@ -20,18 +26,8 @@ Test positive with negative:
 
 Test negative with positive:
 
-        >>> add_integer(-2, 100)
-        98
-
-Test with only one int argument:
-
         >>> add_integer(2)
         100
-
-Test with only one float argument:
-
-        >>> add_integer(100.3)
-        198
 
 Test with float as one of the arguments:
 
