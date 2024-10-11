@@ -1,0 +1,64 @@
+==================================
+How to use 4-print_square.py
+==================================
+
+Tests to be done:
+1.) Test for basic usage scenarios
+2.) Test for non integer input values floats and strings
+3.) Test for negative integers and negative values as input
+4.) Test for empty method
+
+First we import the function:
+
+    >>> print_square = __import__('4-print_square').print_square
+
+Test for basic usage:
+
+    >>> print_square(4)
+    ####
+    ####
+    ####
+    ####
+
+    >>> print_square(10)
+    ##########
+    ##########
+    ##########
+    ##########
+    ##########
+    ##########
+    ##########
+    ##########
+    ##########
+    ##########
+
+    >>> print_square(0)
+
+Test for sring value as input
+
+    >>> print_square("Hello")
+    Traceback (most recent call last):
+    TypeError: size must be an integer
+
+Test for float value as input
+
+    >>> print_square(5.7)
+    Traceback (most recent call last):
+    TypeError: size must be an integer
+
+Test for negative integers an input
+
+    >>> print_square(-2)
+    Traceback (most recent call last):
+    ValueError: size must be >= 0
+
+Test for negative float values
+
+    >>> print_square(-3.0)
+    Traceback (most recent call last):
+    TypeError: size must be an integer
+
+Test for empty method, no value passed
+    >>> print_square()
+    Traceback (most recent call last):
+    TypeError: print_square() missing 1 required positional argument: 'size'
