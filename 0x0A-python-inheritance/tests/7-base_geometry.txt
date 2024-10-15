@@ -1,0 +1,24 @@
+==============================
+How to use 7-base_geometry.py
+==============================
+
+First we import the module:
+
+	>>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
+	>>> bg = BaseGeometry()
+
+Test with a positive integer
+
+	>>> bg.integer_validator("my_int", 14)
+
+Test with a negative integer
+
+	>>> bg.integer_validator("my_int", -14)
+	Traceback (most recent call last):
+	ValueError: my_int must be greater than 0
+
+Test with a string
+
+	>>> bg.integer_validator("my_int", "int")
+	Traceback (most recent call last):
+	TypeError: my_int must be an integer
