@@ -8,11 +8,12 @@ def append_write(filename="", text=""):
 
         Args:
             filename: text file to write to
+            text: string to be apended
 
         Returns:
             returns the number of characters added to a text file
     """
     with open(filename, 'a', encoding='utf-8') as f:
-        chars = f.append(text)
+        chars = f.write(text)
 
     return chars
