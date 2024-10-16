@@ -2,9 +2,6 @@
 """ Module to convert Class to JSON """
 
 
-import json
-
-
 def class_to_json(obj):
     """Function to convert Class to JSON
 
