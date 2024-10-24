@@ -181,6 +181,17 @@ class TestRectangle(unittest.TestCase):
         with self.assertRaises(TypeError):
             r.display(5)
 
+    def test_str_method_basic(self):
+        """ Test  __str__ output """
+        r1 = Rectangle(4, 6, 2, 1, 12)
+        self.assertEqual(str(r1), "[Rectangle] (12) 2/1 - 4/6")
+
+        r2 = Rectangle(5, 5, 1)
+        self.assertEqual(str(r2), "[Rectangle] (1) 1/0 - 5/5")
+
+        r = Rectangle(1, 2)
+        self.assertEqual(str(r), "[Rectangle] (2) 0/0 - 1/2")
+
 
 if __name__ == '__main__':
     unittest.main()
