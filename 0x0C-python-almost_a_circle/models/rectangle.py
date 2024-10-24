@@ -8,18 +8,19 @@ class Rectangle(Base):
     """ Creating Rectangle subclass """
 
     def __init__(self, width, height, x=0, y=0, id=None):
-        """ Instantiating object variables """
+        """Instantiating object variables
+
+            Args:
+                width (int): width of rectangle
+                height (int): height of rectangle
+                x (int): x coordinate
+                y (int): y coordinate
+        """
         super().__init__(id)
-        #self.integer_validator("width", width)
         self.width = width
-        #self.integer_validator("height", height)
         self.height = height
-        #self.integer_validator("x", x)
         self.x = x
-        #self.integer_validator("y", y)
         self.y = y
-
-
 
     @property
     def width(self):
@@ -128,4 +129,3 @@ class Rectangle(Base):
             raise TypeError("{} must be an integer".format(name))
         if (value < 0):
             raise ValueError("{} must be >= 0".format(name))
-
