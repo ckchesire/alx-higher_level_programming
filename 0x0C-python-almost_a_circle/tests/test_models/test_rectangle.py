@@ -17,6 +17,9 @@ class TestRectangle(unittest.TestCase):
 
     def test_for_constructor(self):
         """Test constructor with different combinations of arguments"""
+        with self.assertRaises(TypeError):
+            r = Rectangle()
+
         r1 = Rectangle(10, 2)
         self.assertEqual(r1.width, 10)
         self.assertEqual(r1.height, 2)
@@ -71,7 +74,6 @@ class TestRectangle(unittest.TestCase):
         """Test for validation of setter methods"""
         r = Rectangle(10, 2)
 
-        # Test invalid width values
         with self.assertRaises(TypeError):
             r.width = "inv"
         with self.assertRaises(ValueError):
@@ -98,7 +100,6 @@ class TestRectangle(unittest.TestCase):
 
     def test_constructor_validation(self):
         """Test validation in constructor"""
-        # Test invalid types
         with self.assertRaises(TypeError):
             Rectangle("inv", 3)
         with self.assertRaises(TypeError):
@@ -120,3 +121,40 @@ class TestRectangle(unittest.TestCase):
             Rectangle(2, 2, -5)
         with self.assertRaises(ValueError):
             Rectangle(2, 2, 0, -4)
+
+    def test_area(self):
+        """ Test for area function """
+        r1 = Rectangle(3, 2)
+        self.assertEqual(r1.area(), 6)
+        r2 = Rectangle(2, 10)
+        self.assertEqual(r2.area(), 20)
+        r3 = Rectangle(8, 7, 0, 0, 12)
+        self.assertEqual(r3.area(), 56)
+
+    def test_area_large_nos(self):
+        """ Test area function with large numbers """
+        r = Rectangle(99999999999, 99999999999)
+        self.assertEqual(r.area(), 99999999999 * 99999999999)
+
+    def test_area_changed_values(self):
+        """Test area with changed attributes"""
+        r = Rectangle(2, 10)
+        self.assertEqual(r.area(), 20)
+
+        r.width = 9
+        self.assertEqual(r.area(), 90)
+
+        r.height = 4
+        self.assertEqual(r.area(), 36)
+
+    def test_area_func_exists(self):
+        """Test that the area method exists"""
+        r = Rectangle(4, 2)
+        self.assertTrue(hasattr(r, 'area'))
+        self.assertTrue(callable(getattr(r, 'area')))
+
+    def test_area_no_args(self):
+        """Test that area method doesn't accept arguments"""
+        r = Rectangle(5, 4)
+        with self.assertRaises(TypeError):
+            r.area(1)
