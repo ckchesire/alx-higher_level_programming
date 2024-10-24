@@ -3,6 +3,8 @@
 import unittest
 from models.rectangle import Rectangle
 from models.base import Base
+from io import StringIO
+from unittest.mock import patch
 
 
 class TestRectangle(unittest.TestCase):
@@ -137,7 +139,7 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(r.area(), 99999999999 * 99999999999)
 
     def test_area_changed_values(self):
-        """Test area with changed attributes"""
+        """ Test area with changed attributes"""
         r = Rectangle(2, 10)
         self.assertEqual(r.area(), 20)
 
@@ -148,13 +150,37 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(r.area(), 36)
 
     def test_area_func_exists(self):
-        """Test that the area method exists"""
+        """ Test that the area method exists"""
         r = Rectangle(4, 2)
         self.assertTrue(hasattr(r, 'area'))
         self.assertTrue(callable(getattr(r, 'area')))
 
     def test_area_no_args(self):
-        """Test that area method doesn't accept arguments"""
+        """ Test that area method doesn't accept arguments"""
         r = Rectangle(5, 4)
         with self.assertRaises(TypeError):
             r.area(1)
+
+    def test_display(self):
+        """ Test displaying of a rectangle """
+        r = Rectangle(3, 6)
+        expected_output = '###\n###\n###\n###\n###\n###\n'
+        with patch('sys.stdout', new=StringIO()) as simulated_out:
+            r.display()
+            self.assertEqual(simulated_out.getvalue(), expected_output)
+
+    def test_display_exists(self):
+        """ Test display method exists """
+        r = Rectangle(5, 6)
+        self.assertTrue(hasattr(r, 'display'))
+        self.assertTrue(callable(getattr(r, 'display')))
+
+    def test_display_no_args(self):
+        """ Test display method that it should not accept arguments """
+        r = Rectangle(3, 6)
+        with self.assertRaises(TypeError):
+            r.display(5)
+
+
+if __name__ == '__main__':
+    unittest.main()
