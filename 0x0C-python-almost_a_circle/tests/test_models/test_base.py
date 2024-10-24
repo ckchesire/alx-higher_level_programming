@@ -57,7 +57,3 @@ class BaseTestCase(unittest.TestCase):
         with self.assertRaises(AttributeError):
             print(Base.__nb_objects)
         self.assertEqual(Base._Base__nb_objects, 0)
-
-
-if __name__ == '__main__':
-    unittest.main()

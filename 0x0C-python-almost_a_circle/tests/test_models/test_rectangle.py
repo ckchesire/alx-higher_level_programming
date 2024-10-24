@@ -120,7 +120,3 @@ class TestRectangle(unittest.TestCase):
             Rectangle(2, 2, -5)
         with self.assertRaises(ValueError):
             Rectangle(2, 2, 0, -4)
-
-
-if __name__ == '__main__':
-    unittest.main()
