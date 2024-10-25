@@ -76,3 +76,7 @@ class TestSquare(unittest.TestCase):
         self.assertIsInstance(s1.to_dictionary(), dict)
         required_keys = {'id', 'x', 'size', 'y'}
         self.assertEqual(set(s1.to_dictionary().keys()), required_keys)
+
+
+if __name__ == '__main__':
+    unittest.main()

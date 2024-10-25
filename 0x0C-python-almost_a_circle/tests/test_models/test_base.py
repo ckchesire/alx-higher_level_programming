@@ -57,3 +57,11 @@ class BaseTestCase(unittest.TestCase):
         with self.assertRaises(AttributeError):
             print(Base.__nb_objects)
         self.assertEqual(Base._Base__nb_objects, 0)
+
+    def test_to_json_string_empty_list(self):
+        """ Test to_json_string with non-empty and empty list"""
+        self.assertEqual(Base.to_json_string([]), "[]")
+
+
+if __name__ == '__main__':
+    unittest.main()
