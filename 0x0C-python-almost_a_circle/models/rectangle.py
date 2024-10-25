@@ -26,6 +26,16 @@ class Rectangle(Base):
         return "[Rectangle] ({}) {}/{} - {}/{}".format(
                 self.id, self.x, self.y, self.width, self.height)
 
+    def to_dictionary(self):
+        """ Method that returns a dictionary representation """
+        return {
+                'x': self.x,
+                'y': self.y,
+                'id': self.id,
+                'height': self.height,
+                'width': self.width
+                }
+
     @property
     def width(self):
         """ Getter method to retrieve the value of width

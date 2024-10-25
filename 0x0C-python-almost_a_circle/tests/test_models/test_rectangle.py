@@ -220,6 +220,21 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(r.x, 35)
         self.assertEqual(r.y, 45)
 
+    def test_to_dictionaty(self):
+        """ Test the dictionary method """
+        rect = Rectangle(10, 2, 1, 9, 1)
+        expected_dict = {
+                'x': 1,
+                'y': 9,
+                'id': 1,
+                'height': 2,
+                'width': 10
+                }
+        self.assertEqual(rect.to_dictionary(), expected_dict)
+        self.assertIsInstance(rect.to_dictionary(), dict)
+        required_keys = {'x', 'y', 'id', 'height', 'width'}
+        self.assertEqual(set(rect.to_dictionary().keys()), required_keys)
+
 
 if __name__ == '__main__':
     unittest.main()
