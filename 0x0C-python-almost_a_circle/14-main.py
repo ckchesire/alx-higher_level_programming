@@ -7,7 +7,7 @@ if __name__ == "__main__":
 
     r1 = Rectangle(10, 7, 2, 8)
     dictionary = r1.to_dictionary()
-    json_dictionary = Base.to_json_string([dictionary])
+    json_dictionary = Base.to_json_string(None)
     r = Rectangle(10, 7, 2, 8)
     r2 = Rectangle(2, 4, 1, 2)
     dict_list = [r1.to_dictionary(), r2.to_dictionary()]
