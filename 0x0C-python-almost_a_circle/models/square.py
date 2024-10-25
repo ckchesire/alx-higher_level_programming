@@ -20,7 +20,7 @@ class Square(Rectangle):
         return self.width
 
     @size.setter
-    def size(self):
+    def size(self, value):
         """ Set the value of the square and validate through rectangle."""
         self.width = value
         self.height = value
