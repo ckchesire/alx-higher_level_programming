@@ -235,6 +235,18 @@ class TestRectangle(unittest.TestCase):
         required_keys = {'x', 'y', 'id', 'height', 'width'}
         self.assertEqual(set(rect.to_dictionary().keys()), required_keys)
 
+    def test_to_json_string_empty_list(self):
+        """ Test to_json_string with non-empty and empty list"""
+        self.assertEqual(Base.to_json_string([]), "[]")
+
+        r1 = Rectangle(10, 7, 5, 8)
+        dictionary = r1.to_dictionary()
+        json_string = Base.to_json_string([dictionary])
+        self.assertTrue(isinstance(json_string, str))
+        self.assertTrue(len(json_string) > 0)
+        self.assertTrue(json_string.startswith('[{'))
+        self.assertTrue(json_string.endswith('}]'))
+
 
 if __name__ == '__main__':
     unittest.main()
