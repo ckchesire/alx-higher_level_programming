@@ -16,7 +16,7 @@ class Square(Rectangle):
 
     @property
     def size(self):
-        """ Get the size of the Square """
+        """ Get the size of the square """
         return self.width
 
     @size.setter
@@ -24,3 +24,14 @@ class Square(Rectangle):
         """ Set the value of the square and validate through rectangle."""
         self.width = value
         self.height = value
+
+    def update(self, *args, **kwargs):
+        """ Function to update square attributes """
+        attrs = ["id", "size", "x", "y"]
+        for i, v in enumerate(args):
+            if i < len(attrs):
+                setattr(self, attrs[i], v)
+
+        if kwargs is not None:
+            for key, value in kwargs.items():
+                setattr(self, key, value)

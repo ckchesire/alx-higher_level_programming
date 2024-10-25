@@ -52,3 +52,13 @@ class TestSquare(unittest.TestCase):
         with patch('sys.stdout', new=StringIO()) as simulate_out:
             s.display()
             self.assertEqual(simulate_out.getvalue(), expected_output)
+
+    def test_update_with_kwargs(self):
+        """Test updating attributes using **kwargs."""
+        sq = Square(3, 4, 5, 6)
+        sq.update(size=25, x=35, y=45, id=99)
+        self.assertEqual(sq.id, 99)
+        self.assertEqual(sq.width, 25)
+        self.assertEqual(sq.height, 25)
+        self.assertEqual(sq.x, 35)
+        self.assertEqual(sq.y, 45)
