@@ -151,9 +151,13 @@ class Rectangle(Base):
                 print(' '*self.x, end='')
                 print('#'*self.width)
 
-    def update(self, *args):
+    def update(self, *args, **kwargs):
         """ Function to update rectangle attributes """
         attrs = ["id", "width", "height", "x", "y"]
         for i, v in enumerate(args):
             if i < len(attrs):
                 setattr(self, attrs[i], v)
+
+        if kwargs is not None:
+            for key, value in kwargs.items():
+                setattr(self, key, value)

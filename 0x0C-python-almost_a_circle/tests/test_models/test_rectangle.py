@@ -199,8 +199,8 @@ class TestRectangle(unittest.TestCase):
         with patch('sys.stdout', new=StringIO()) as simulated_out:
             r1.display()
             self.assertEqual(simulated_out.getvalue(), expected_output)
-    
-    def test_update_attributes(self):
+
+    def test_update_args(self):
         """Test updating attributes with *args."""
         r = Rectangle(3, 4, 5, 6)
         r.update(10, 20, 30, 40, 50)
@@ -209,6 +209,17 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(r.height, 30)
         self.assertEqual(r.x, 40)
         self.assertEqual(r.y, 50)
+
+    def test_update_with_kwargs(self):
+        """Test updating attributes using **kwargs."""
+        r = Rectangle(3, 4, 5, 6)
+        r.update(height=15, width=25, x=35, y=45, id=99)
+        self.assertEqual(r.id, 99)
+        self.assertEqual(r.width, 25)
+        self.assertEqual(r.height, 15)
+        self.assertEqual(r.x, 35)
+        self.assertEqual(r.y, 45)
+
 
 if __name__ == '__main__':
     unittest.main()
