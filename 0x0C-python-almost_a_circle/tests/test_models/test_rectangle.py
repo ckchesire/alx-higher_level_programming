@@ -192,6 +192,23 @@ class TestRectangle(unittest.TestCase):
         r = Rectangle(1, 2)
         self.assertEqual(str(r), "[Rectangle] (2) 0/0 - 1/2")
 
+    def test_display_with_coordinates(self):
+        """Test display of rectangle with x=2, y=2"""
+        r1 = Rectangle(2, 3, 2, 2)
+        expected_output = "\n\n  ##\n  ##\n  ##\n"
+        with patch('sys.stdout', new=StringIO()) as simulated_out:
+            r1.display()
+            self.assertEqual(simulated_out.getvalue(), expected_output)
+    
+    def test_update_attributes(self):
+        """Test updating attributes with *args."""
+        r = Rectangle(3, 4, 5, 6)
+        r.update(10, 20, 30, 40, 50)
+        self.assertEqual(r.id, 10)
+        self.assertEqual(r.width, 20)
+        self.assertEqual(r.height, 30)
+        self.assertEqual(r.x, 40)
+        self.assertEqual(r.y, 50)
 
 if __name__ == '__main__':
     unittest.main()

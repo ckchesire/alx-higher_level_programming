@@ -144,5 +144,16 @@ class Rectangle(Base):
 
     def display(self):
         """ Function to print out rectangle instance with '#' """
-        for i in range(self.height):
-            print('#'*self.width)
+        for i in range(self.height + self.y):
+            if i < self.y:
+                print('')
+            else:
+                print(' '*self.x, end='')
+                print('#'*self.width)
+
+    def update(self, *args):
+        """ Function to update rectangle attributes """
+        attrs = ["id", "width", "height", "x", "y"]
+        for i, v in enumerate(args):
+            if i < len(attrs):
+                setattr(self, attrs[i], v)
