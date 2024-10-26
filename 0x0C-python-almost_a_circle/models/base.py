@@ -3,6 +3,7 @@
 
 import os
 import json
+import csv
 
 
 class Base:
@@ -58,6 +59,51 @@ class Base:
         json_string = cls.to_json_string(json_list)
         with open(filename, "w", encoding="utf-8") as f:
             f.write(json_string)
+
+    @classmethod
+    def save_to_file_csv(cls, list_objs):
+        """Save list object data into csv file
+
+            Args:
+                list_objs (list): A list of instances that inherits from Base
+        """
+        filename = cls.__name__ + ".csv"
+
+        with open(filename, mode='w', newline='', encoding="utf-8")\
+                as csv_file:
+            if list_objs is None:
+                list_objs = []
+
+            writer = csv.writer(csv_file)
+
+            for obj in list_objs:
+                if cls.__name__ == "Rectangle":
+                    row = [obj.id, obj.width, obj.height, obj.x, obj.y]
+                elif cls.__name__ == "Square":
+                    row = [obj.id, obj.size, obj.x, obj.y]
+            writer.writerow(row)
+
+    @classmethod
+    def load_from_file_csv(cls):
+        """Function to load a list of instances from a csv file
+
+            Returns:
+                list: list of instances created from csv data.
+        """
+        filename = cls.__name__ + ".csv"
+
+        if not os.path.isfile(filename):
+            return []
+
+        with open(filename, "r", newline="") as csv_file:
+            if cls.__name__ == "Rectangle":
+                attribute_names = ["id", "width", "height", "x", "y"]
+            else:
+                attribute_names = ["id", "size", "x", "y"]
+            list_dicts = csv.DictReader(csv_file, fieldnames=attribute_names)
+            list_dicts = [dict([k, int(v)] for k, v in d.items())
+                          for d in list_dicts]
+            return [cls.create(**attributes) for attributes in list_dicts]
 
     @staticmethod
     def from_json_string(json_string):
