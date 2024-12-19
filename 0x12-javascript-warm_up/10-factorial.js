@@ -6,8 +6,7 @@ const firstNum = parseInt(args[0], 10);
 function factorial (a) {
   if (a === 1) {
     return (1);
-  }
-  else {
+  } else {
     return a * factorial(a - 1);
   }
 }
