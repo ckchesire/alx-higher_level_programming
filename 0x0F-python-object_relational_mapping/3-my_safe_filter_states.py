@@ -6,7 +6,7 @@ import MySQLdb
 import sys
 
 
-def get_states_with_n():
+def get_states_by_name():
     """
         Method that retrieves command-line arguments
         and runs query on mysql server instance
@@ -14,6 +14,7 @@ def get_states_with_n():
     username = sys.argv[1]
     password = sys.argv[2]
     database = sys.argv[3]
+    state = sys.argv[4]
 
     db = MySQLdb.connect(
             host="localhost",
@@ -24,7 +25,8 @@ def get_states_with_n():
         )
 
     c = db.cursor()
-    c.execute("SELECT*FROM states WHERE name LIKE BINARY 'N%' ORDER BY id ASC")
+    query = "SELECT * FROM states WHERE name = BINARY %s ORDER BY id ASC"
+    c.execute(query, (state,))
     rows = c.fetchall()
 
     for row in rows:
@@ -35,4 +37,4 @@ def get_states_with_n():
 
 
 if __name__ == "__main__":
-    get_states_with_n()
+    get_states_by_name()

@@ -8,7 +8,7 @@ import sys
 
 def get_states_by_name():
     """
-        Method to that retrieves command-line arguments
+        Method that retrieves command-line arguments
         and runs query on mysql server instance
     """
     username = sys.argv[1]
