@@ -25,7 +25,8 @@ def get_states_by_name():
         )
 
     c = db.cursor()
-    query = "SELECT*FROM states WHERE name ='{}' ORDER BY id ASC".format(state)
+    query = "SELECT * FROM states WHERE name = BINARY '{}' ORDER BY id ASC"
+    query = query.format(state)
     c.execute(query)
     rows = c.fetchall()
 
