@@ -18,7 +18,7 @@ def get_url(url):
     response = requests.get(url)
     body = response.text
 
-    print("Body response")
+    print("Body response:")
     print(f"\t- type: {type(body)}")
     print(f"\t- content: {body}")
 
