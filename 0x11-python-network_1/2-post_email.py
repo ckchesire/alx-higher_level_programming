@@ -20,7 +20,7 @@ def post_request(url, email):
     Returns:
        str : string representing output of a POST request
     """
-    data = {'email': 'email'}
+    data = {'email': email}
     encoded_data = urllib.parse.urlencode(data).encode('ascii')
     req = urllib.request.Request(url, encoded_data)
     with urllib.request.urlopen(req) as response:
