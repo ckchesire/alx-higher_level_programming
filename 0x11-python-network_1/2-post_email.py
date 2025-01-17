@@ -22,8 +22,8 @@ def post_request(url, email):
     """
     data = {'email': 'email'}
     encoded_data = urllib.parse.urlencode(data).encode('utf-8')
-
-    with urllib.request.urlopen(url, encoded_data) as response:
+    req = urllib.request.Request(url, encoded_data)
+    with urllib.request.urlopen(req) as response:
         print(response.read().decode('utf-8'))
 
 
