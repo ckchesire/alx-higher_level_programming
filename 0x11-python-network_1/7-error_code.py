@@ -16,11 +16,11 @@ def get_request(url):
     Returns:
        str : string representing body of the reponse
     """
-    response = requests.get(url)
-    if response.status_code >= 400:
-        print(f"Error code: {response.status_code}")
-    else:
+    try:
+        response = requests.get(url)
         print(response.text)
+    except requests.exceptions.RequestException as e:
+        print(f"An error occured: {e}")
 
 
 if __name__ == "__main__":
