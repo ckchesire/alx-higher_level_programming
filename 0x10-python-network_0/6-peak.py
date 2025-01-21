@@ -2,6 +2,7 @@
 """Function that finds a peak in a list of unsorted integers
 """
 
+
 def find_peak(list_of_integers):
     """Method to find the peak with the shortest algorithm
 
